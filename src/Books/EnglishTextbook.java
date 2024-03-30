@@ -10,7 +10,7 @@ package Books;
  */
 class EnglishTextbook extends Book {
 
-    private String level; // Уровень: Бакалавриат или Магистратура
+    private String level; 
     private String author;
     private String university;
 

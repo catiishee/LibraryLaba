@@ -17,9 +17,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
  *
  * @author user
  */
-public class laBa extends JFrame {
+public class GUI extends JFrame {
 
-    public laBa(List<User> students, List<User> teachers) {
+    public GUI(List<User> students, List<User> teachers) {
         setTitle("Библиотечные записи");
         setSize(400, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

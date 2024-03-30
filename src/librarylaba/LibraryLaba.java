@@ -24,7 +24,7 @@ import javax.swing.SwingUtilities;
 public class LibraryLaba {
 
     public static void main(String[] args) {
-        
+
         LibraryLaba laba = new LibraryLaba();
 
         List<Book> books = laba.generateBooks();
@@ -33,7 +33,7 @@ public class LibraryLaba {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new laBa(students, teachers).setVisible(true);
+                new GUI(students, teachers).setVisible(true);
             }
         });
     }

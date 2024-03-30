@@ -28,7 +28,7 @@ public class StudentBuilder implements Builder {
     
     @Override
     public Builder createFullName() {
-        user.setFullName(new NameGenarator().generateFullName());
+        user.setFullName(new NameGenarator().generateFullNameStudent());
         
         return this;
         

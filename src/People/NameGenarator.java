@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class NameGenarator {
     
-    public String generateFullName() {
+    public String generateFullNameStudent() {
         try {
             Random random = new Random();
             int option = random.nextInt(2);

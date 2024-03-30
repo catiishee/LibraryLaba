@@ -15,6 +15,6 @@ public interface Builder {
     Builder setFullName(String fullName);
     User build();
     
-    abstract Builder createFullName();
+    Builder createFullName();
     Builder setBooks(List<Book> books);
 }

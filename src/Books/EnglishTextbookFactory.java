@@ -7,6 +7,7 @@ package Books;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,20 +18,22 @@ import java.util.Random;
  */
 public class EnglishTextbookFactory implements BookFactory {
 
-    private String csvFilePath = "C:\\Users\\user\\OneDrive\\Документы\\NetBeansProjects\\LibraryLaba\\src\\People\\англ.csv";
-
-    @Override
     public Book createEducationalBook() {
-        String[] bookData = generateBookDataFromCSV();
-        if (bookData != null) {
-            String discipline = bookData[0];
-            String author = bookData[1];
-            String university = bookData[2];
+        try {
+            Random random = new Random();
+            List<String> titles = loadFromCSV("C:\\Users\\user\\OneDrive\\Документы\\NetBeansProjects\\LibraryLaba\\src\\People\\англИмена.csv");
+            List<String> universities = loadFromCSV("C:\\Users\\user\\OneDrive\\Документы\\NetBeansProjects\\LibraryLaba\\src\\People\\англУники.csv");
+            List<String> authors = loadFromCSV("C:\\Users\\user\\OneDrive\\Документы\\NetBeansProjects\\LibraryLaba\\src\\People\\англАвторы.csv");
+            String title = titles.get(random.nextInt(titles.size()));
+            String university = universities.get(random.nextInt(universities.size()));
+            String author = authors.get(random.nextInt(authors.size()));
             String level = new Random().nextBoolean() ? "bachelors" : "magistracy";
-            return new EnglishTextbook(discipline, level, author, university);
-        } else {
-            return null;
+            return new EnglishTextbook(title, level, author, university);
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(RussianTextbookFactory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+
+        return null;
     }
 
     @Override
@@ -40,32 +43,6 @@ public class EnglishTextbookFactory implements BookFactory {
         return new FictionBook(title, "English");
     }
 
-    private String[] generateBookDataFromCSV() {
-        List<String[]> lines = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(";");
-                if (parts.length >= 2) {
-                    lines.add(parts);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        if (!lines.isEmpty()) {
-            String[] data = new String[3];
-            data[0] = lines.get(new Random().nextInt(lines.size()))[0];
-            data[1] = lines.get(new Random().nextInt(lines.size()))[1];
-            data[2] = lines.get(new Random().nextInt(lines.size()))[2];
-            return data;
-        } else {
-            return null;
-        }
-    }
-    
     private String generateTitleFromCSV(String csvFilePath) {
         List<String[]> lines = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
@@ -90,5 +67,18 @@ public class EnglishTextbookFactory implements BookFactory {
         } else {
             return "Default Title";
         }
+    }
+
+    private static List<String> loadFromCSV(String fileName) throws IOException {
+        List<String> records = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    records.add(line.split(",")[0]);
+                }
+            }
+        }
+        return records;
     }
 }

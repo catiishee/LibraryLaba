@@ -19,19 +19,6 @@ import java.util.logging.Logger;
  */
 public class RussianTextbookFactory implements BookFactory {
 
-    private static List<String> loadFromCSV(String fileName) throws IOException {
-        List<String> records = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (!line.isEmpty()) {
-                    records.add(line.split(",")[0]);
-                }
-            }
-        }
-        return records;
-    }
-
     @Override
     public Book createEducationalBook() {
         try {
@@ -80,4 +67,18 @@ public class RussianTextbookFactory implements BookFactory {
             return "Default Title";
         }
     }
+    
+        private static List<String> loadFromCSV(String fileName) throws IOException {
+        List<String> records = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    records.add(line.split(",")[0]);
+                }
+            }
+        }
+        return records;
+    }
+
 }
