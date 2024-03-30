@@ -71,9 +71,9 @@ public class EnglishTextbookFactory implements BookFactory {
 
     private static List<String> loadFromCSV(String fileName) throws IOException {
         List<String> records = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 if (!line.isEmpty()) {
                     records.add(line.split(",")[0]);
                 }
