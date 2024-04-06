@@ -10,35 +10,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author user
  */
-public class RussianTextbookFactory implements BookFactory {
+public class RussianFictionalFactory implements FictionalBookFactory {
+
+    List<String> authors = CsvLoader.loadFromCSV("C:\\Users\\user\\OneDrive\\Документы\\NetBeansProjects\\LibraryLaba\\src\\People\\русатовры.csv");
 
     @Override
-    public Book createEducationalBook() {
-        try {
-            Random random = new Random();
-            List<String> titels = loadFromCSV("C:\\Users\\user\\OneDrive\\Документы\\NetBeansProjects\\LibraryLaba\\src\\People\\Русскоязычная литература.csv");
-            List<String> types = new ArrayList<>(List.of("Учебник", "Пособие", "Задачник"));
-            String title = types.get(random.nextInt(types.size())) + " по " + titels.get(random.nextInt(titels.size()));
-            return new RussianTextbook(title);
-        } catch (IOException ex) {
-            Logger.getLogger(RussianTextbookFactory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
-    }
-
-    @Override
-    public Book createFictionalBook() {
+    public Book createBook() {
         String csvFilePath = "C:\\Users\\user\\OneDrive\\Документы\\NetBeansProjects\\LibraryLaba\\src\\People\\fiction.csv";
         String title = generateTitleFromCSV(csvFilePath);
-        return new FictionBook(title, "Русский");
+        String author = authors.get(new Random().nextInt(authors.size()));
+        return new FictionBook(title, "Русский",author);
     }
 
     private String generateTitleFromCSV(String csvFilePath) {
@@ -66,19 +52,6 @@ public class RussianTextbookFactory implements BookFactory {
         } else {
             return "Default Title";
         }
-    }
-    
-        private static List<String> loadFromCSV(String fileName) throws IOException {
-        List<String> records = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                if (!line.isEmpty()) {
-                    records.add(line.split(",")[0]);
-                }
-            }
-        }
-        return records;
     }
 
 }

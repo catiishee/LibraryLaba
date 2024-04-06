@@ -6,12 +6,32 @@ package Books;
 
 /**
  *
- * @author user
+ * @author kateshcherbinina
  */
 public class FictionBook extends Book {
 
+    private String author;
+
     public FictionBook(String title, String language) {
         super(title, language);
+        author = null;
     }
+
+    public FictionBook(String title, String language,String author) {
+        super(title, language);
+        this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        if(author != null){
+            return title + " - " + author;
+        }
+        else{
+            return title;
+        }
+    }
+    
+    
 
 }

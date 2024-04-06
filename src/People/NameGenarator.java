@@ -15,10 +15,10 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author user
+ * @author kateshcherbinina
  */
 public class NameGenarator {
-    
+
     public String generateFullNameStudent() {
         try {
             Random random = new Random();

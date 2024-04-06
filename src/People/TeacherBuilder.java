@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author user
+ * @author kateshcherbinina
  */
 public class TeacherBuilder implements Builder {
     

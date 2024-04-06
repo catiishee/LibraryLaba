@@ -9,12 +9,15 @@ import java.util.List;
 
 /**
  *
- * @author user
+ * @author kateshcherbinina
  */
 public interface Builder {
+
     Builder setFullName(String fullName);
+
     User build();
-    
+
     Builder createFullName();
+
     Builder setBooks(List<Book> books);
 }

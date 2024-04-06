@@ -6,7 +6,7 @@ package Books;
 
 /**
  *
- * @author user
+ * @author kateshcherbininaf
  */
 public abstract class Book {
 

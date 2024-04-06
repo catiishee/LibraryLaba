@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author user
+ * @author kateshcherbininaà
  */
 public class User {
 

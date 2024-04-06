@@ -6,10 +6,8 @@ package Books;
 
 /**
  *
- * @author kateshcherbinina
+ * @author user
  */
-public interface BookFactory {
-
-    Book createBook();
+public interface EducationalBookFactory extends BookFactory {
 
 }

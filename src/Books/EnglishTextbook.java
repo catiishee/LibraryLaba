@@ -6,11 +6,11 @@ package Books;
 
 /**
  *
- * @author user
+ * @author kateshcherbinina
  */
 class EnglishTextbook extends Book {
 
-    private String level; 
+    private String level;
     private String author;
     private String university;
 
@@ -26,5 +26,4 @@ class EnglishTextbook extends Book {
         return super.title + " (" + level + ") " + author + " - " + university;
     }
 
-    
 }

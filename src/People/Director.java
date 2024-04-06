@@ -9,16 +9,17 @@ import java.util.List;
 
 /**
  *
- * @author user
+ * @author kateshcherbinina
  */
 public class Director {
+
     private Builder builder;
 
     public Director(Builder builder) {
         this.builder = builder;
     }
-    
-    public User createUser(List<Book> books){
-        return  builder.createFullName().setBooks(books).build();
+
+    public User createUser(List<Book> books) {
+        return builder.createFullName().setBooks(books).build();
     }
 }

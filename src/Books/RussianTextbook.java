@@ -6,16 +6,13 @@ package Books;
 
 /**
  *
- * @author user
+ * @author kateshcherbinina
  */
 public class RussianTextbook extends Book {
 
-
     public RussianTextbook(String title) {
         super(title, "Русский");
-        
+
     }
 
-   
-    
 }
